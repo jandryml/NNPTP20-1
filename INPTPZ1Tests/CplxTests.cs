@@ -1,10 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using INPTPZ1.Mathematics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Numerics;
 
 namespace INPTPZ1.Mathematics.Tests
 {
@@ -15,23 +10,11 @@ namespace INPTPZ1.Mathematics.Tests
         [TestMethod()]
         public void AddTest()
         {
-            Cplx a = new Cplx()
-            {
-                Re = 10,
-                Imaginari = 20
-            };
-            Cplx b = new Cplx()
-            {
-                Re = 1,
-                Imaginari = 2
-            };
+            Complex a = new Complex(10, 20);
+            Complex b = new Complex(1, 2);
 
-            Cplx actual = a.Add(b);
-            Cplx shouldBe = new Cplx()
-            {
-                Re = 11,
-                Imaginari = 22
-            };
+            Complex actual = a + b;
+            Complex shouldBe = new Complex(11, 22);
 
             Assert.AreEqual(shouldBe, actual);
         }
