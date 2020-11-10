@@ -38,12 +38,12 @@ namespace INPTPZ1
 			double xstep = (maximum.X - minimum.X) / resolutionHolder.Width;
 			double ystep = (maximum.Y - minimum.Y) / resolutionHolder.Height;
 
-			for (int width = 0; width < resolutionHolder.Width; width++)
+			for (int xIndex = 0; xIndex < resolutionHolder.Width; xIndex++)
 			{
-				for (int height = 0; height < resolutionHolder.Height; height++)
+				for (int yIndex = 0; yIndex < resolutionHolder.Height; yIndex++)
 				{
-					double y = minimum.Y + width * ystep;
-					double x = minimum.X + height * xstep;
+					double y = minimum.Y + xIndex * ystep;
+					double x = minimum.X + yIndex * xstep;
 
 					x = x == 0 ? MIN_VALUE : x;
 					y = y == 0 ? MIN_VALUE : y;
@@ -52,7 +52,7 @@ namespace INPTPZ1
 
 					int iteration = FindSolutionByNewtonIteration(originalPolynom, derivedPolynom);
 
-					imageHandler.SetPixel(height, width, ImageHandler.GetColorByParams(iteration, GetRootCount(rootList)));
+					imageHandler.SetPixel(xIndex, yIndex, ImageHandler.GetColorByParams(iteration, GetRootCount(rootList)));
 				}
 			}
 			imageHandler.SaveImage(outputPath);
